@@ -15,36 +15,58 @@ def download_all_lessons():
     level = 1
     download_path = Path("/home/hameed/Downloads/TTMIK_Unit_Lessons")
     download_path.mkdir(parents=True, exist_ok=True)
-    download_root = "http://traffic.libsyn.com/talktomeinkorean/ttmik-"
 
-    # For the 9 levels available
-    for i in range(9):
-        # Set the level's path and set lesson to 1
-        path = download_path / str(level)
-        path.mkdir(parents=True, exist_ok=True)
-        lesson_num = 1
 
-        # 30 Lessons in each level
-        while lesson_num <= 30:
-            # Name of the current lesson
-            lesson = 'l'+ str(level) + 'l' + str(lesson_num)
+    # TODO : Change download root link back to curriculm page
+    # download_root = "http://talktomeinkorean.com/curriculum/"
+    #
+    # downloaded_root_page = requests.get(download_root)
+    # root_page_text = downloaded_root_page.text
+    #
+    # root_page = BeautifulSoup(root_page_text, "html.parser")
+    # links = root_page.find('div',{'class':'entry-content'})
+    #
+    # lessons = links.find()
+    print(lessons)
 
-            # Append the download link root to point to current lesson
-            # HTTP Get Method with requests
-            # Write content to specified file
-            mp3_site = download_root + lesson + '.mp3'
-            mp3 = requests.get(mp3_site)
-            with open((path / str(lesson + '.mp3')), 'wb') as m:
-                m.write(mp3.content)
-
-            pdf_site = download_root + lesson + '.pdf'
-            pdf = requests.get(pdf_site)
-            with open((path / str(lesson + '.pdf')), 'wb') as p:
-                p.write(pdf.content)
-
-            lesson_num += 1
-
-        level += 1
+    # # For the 9 levels available
+    # for i in range(9):
+    #     # Set the level's path and set lesson counter to 1
+    #     path = download_path / str(level)
+    #     path.mkdir(parents=True, exist_ok=True)
+    #     lesson_num = 1
+    #
+    #     # 30 Lessons in each level
+    #     while lesson_num <= 30:
+    #
+    #         # Name of the current lesson
+    #         lesson = 'l'+ str(level) + 'l' + str(lesson_num)
+    #
+    #
+    #         #############################################################
+    #         # TODO : Change the mp3_site and pdf_site variables to match the actual download link from the page
+    #         # The curriculm page will
+    #
+    #
+    #         # Append the download link root to point to current lesson
+    #         # HTTP Get Method with requests
+    #         # Write content to specified file
+    #         mp3_site = download_root + lesson + '.mp3'
+    #         mp3 = requests.get(mp3_site)
+    #         with open((path / str(lesson + '.mp3')), 'wb') as m:
+    #             m.write(mp3.content)
+    #
+    #         pdf_site = download_root + lesson + '.pdf'
+    #         pdf = requests.get(pdf_site)
+    #         with open((path / str(lesson + '.pdf')), 'wb') as p:
+    #             p.write(pdf.content)
+    #         #############################################################
+    #
+    #         # Move on to the next lesson
+    #         lesson_num += 1
+    #
+    #     # Move on to the next unit
+    #     level += 1
 
 
 
